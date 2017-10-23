@@ -1,0 +1,9 @@
+parameters:
+
+application:
+	errorPresenter: Error
+	mapping:
+		*: GameeApi\Presenters\*Presenter
+
+services:
+	router: GameeApi\Router\RouterFactory::createRouter

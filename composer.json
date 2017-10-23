@@ -1,0 +1,37 @@
+{
+  "name": "ludekvesely/gamee-api",
+  "description": "Simple API for highscores management.",
+  "version": "1.0.0",
+  "type": "project",
+  "authors": [
+    {
+      "name": "Luděk Veselý",
+      "homepage": "https://www.ludekvesely.cz"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {
+    "php": ">=7.1",
+    "nette/application": "~2.4.0",
+    "nette/bootstrap": "~2.4.0",
+    "nette/caching": "~2.5.0",
+    "nette/di": "~2.4.0",
+    "nette/finder": "~2.4.0",
+    "nette/http": "~2.4.0",
+    "nette/robot-loader": "~2.4.0",
+    "nette/safe-stream": "~2.3.0",
+    "nette/utils": "~2.4.0",
+    "tracy/tracy": "~2.4.0"
+  },
+  "require-dev": {
+    "escapestudios/symfony2-coding-standard": "2.x-dev"
+  },
+  "config": {
+    "platform": {
+      "php": "7.1"
+    }
+  },
+  "autoload": {
+    "classmap": ["src/"]
+  }
+}
