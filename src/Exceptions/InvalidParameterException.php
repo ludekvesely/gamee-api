@@ -4,6 +4,6 @@ declare(strict_types = 1);
 
 namespace GameeApi\Exceptions;
 
-class InvalidParameterException extends \Exception
+class InvalidParameterException extends \InvalidArgumentException
 {
 }
