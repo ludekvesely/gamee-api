@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+
+
+echo "==> Store scores"
+
+curl -X POST http://localhost:8000 -H 'content-type: application/json' -d '[
+    {"jsonrpc": "2.0", "method": "createScore", "id": 1, "params": {"gameId": 1, "userId": 21, "score": 500}},
+    {"jsonrpc": "2.0", "method": "createScore", "id": 2, "params": {"gameId": 1, "userId": 22, "score": 5212}},
+    {"jsonrpc": "2.0", "method": "createScore", "id": 3, "params": {"gameId": 1, "userId": 32, "score": 500}},
+    {"jsonrpc": "2.0", "method": "createScore", "id": 4, "params": {"gameId": 1, "userId": 44, "score": 711}},
+    {"jsonrpc": "2.0", "method": "createScore", "id": 5, "params": {"gameId": 1, "userId": 11, "score": 918}},
+    {"jsonrpc": "2.0", "method": "createScore", "id": 6, "params": {"gameId": 1, "userId": 2, "score": 22}},
+    {"jsonrpc": "2.0", "method": "createScore", "id": 7, "params": {"gameId": 1, "userId": 8, "score": 0}},
+    {"jsonrpc": "2.0", "method": "createScore", "id": 8, "params": {"gameId": 1, "userId": 19, "score": 199}},
+    {"jsonrpc": "2.0", "method": "createScore", "id": 9, "params": {"gameId": 1, "userId": 22, "score": 9917}},
+    {"jsonrpc": "2.0", "method": "createScore", "id": 10, "params": {"gameId": 1, "userId": 98, "score": 7082}},
+    {"jsonrpc": "2.0", "method": "createScore", "id": 11, "params": {"gameId": 1, "userId": 6, "score": 120}},
+    {"jsonrpc": "2.0", "method": "createScore", "id": 12, "params": {"gameId": 2, "userId": 54, "score": 11}}
+]'
+
+
+echo
+echo
+echo "==> Retrieve top ten users for game 1 (users 21 and 32 have same score)"
+
+curl -X POST http://localhost:8000 -H 'content-type: application/json' -d '{
+    "jsonrpc": "2.0",
+    "method":
+    "getTopTenScores",
+    "id": 100,
+    "params": {
+        "gameId": 1
+    }
+}'
+
+
+echo
+echo
+echo "==> Retrieve top ten users for game 2 (only 1 user played this game)"
+
+curl -X POST http://localhost:8000 -H 'content-type: application/json' -d '{
+    "jsonrpc": "2.0",
+    "method":
+    "getTopTenScores",
+    "id": 101,
+    "params": {
+        "gameId": 2
+    }
+}'
+
+
+echo
+echo
+echo "==> Retrieve top users ten for game 3 (no results)"
+
+curl -X POST http://localhost:8000 -H 'content-type: application/json' -d '{
+    "jsonrpc": "2.0",
+    "method":
+    "getTopTenScores",
+    "id": 102,
+    "params": {
+        "gameId": 3
+    }
+}'

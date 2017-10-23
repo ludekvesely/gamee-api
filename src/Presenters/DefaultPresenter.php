@@ -4,7 +4,6 @@ declare(strict_types = 1);
 
 namespace GameeApi\Presenters;
 
-use GameeApi\Exceptions\InvalidParameterException;
 use GameeApi\Scores\CreateScore;
 use GameeApi\Scores\GetTopTenScores;
 use JsonRPC\Server;
@@ -40,7 +39,7 @@ class DefaultPresenter extends Presenter
             ->withCallback(
                 'createScore',
                 function ($userId, $gameId, $score) use ($createStore) {
-                    return $createStore($userId, $gameId, $score);
+                    return $createStore($gameId, $userId, $score);
                 }
             );
 

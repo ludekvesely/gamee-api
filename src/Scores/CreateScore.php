@@ -6,10 +6,10 @@ namespace GameeApi\Scores;
 
 class CreateScore extends RedisClient
 {
-    public function __invoke($userId, $gameId, $score): array
+    public function __invoke($gameId, $userId, $score): array
     {
-        $this->validateRequiredInt('userId', $userId);
         $this->validateRequiredInt('gameId', $gameId);
+        $this->validateRequiredInt('userId', $userId);
         $this->validateRequiredInt('score', $score, true);
 
         $this->redisClient->zadd($gameId, $score, $userId);
