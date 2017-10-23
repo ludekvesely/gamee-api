@@ -4,8 +4,47 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "152e3994020592da47b6fd9e541f2dea",
+    "content-hash": "ec78b363ca4d9f8bd398ddafc2371001",
     "packages": [
+        {
+            "name": "fguillot/json-rpc",
+            "version": "v1.2.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fguillot/JsonRPC.git",
+                "reference": "ea2720b13e986bbf23e832b135c84c91ead7259f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fguillot/JsonRPC/zipball/ea2720b13e986bbf23e832b135c84c91ead7259f",
+                "reference": "ea2720b13e986bbf23e832b135c84c91ead7259f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.4"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.8.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "JsonRPC": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Frédéric Guillot"
+                }
+            ],
+            "description": "Simple Json-RPC client/server library that just works",
+            "homepage": "https://github.com/fguillot/JsonRPC",
+            "time": "2017-01-12T21:31:30+00:00"
+        },
         {
             "name": "nette/application",
             "version": "v3.0.0-alpha1",
@@ -1380,6 +1419,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "fguillot/json-rpc": 0,
         "escapestudios/symfony2-coding-standard": 20
     },
     "prefer-stable": true,

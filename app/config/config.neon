@@ -7,3 +7,5 @@ application:
 
 services:
 	router: GameeApi\Router\RouterFactory::createRouter
+	- GameeApi\Scores\CreateScore
+	- GameeApi\Scores\GetTopTenScores
