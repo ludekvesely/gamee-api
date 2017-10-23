@@ -4,10 +4,11 @@ declare(strict_types = 1);
 
 namespace GameeApi\Presenters;
 
+use GameeApi\Exceptions\InvalidParameterException;
 use GameeApi\Scores\CreateScore;
 use GameeApi\Scores\GetTopTenScores;
-use Nette\Application\UI\Presenter;
 use JsonRPC\Server;
+use Nette\Application\UI\Presenter;
 
 class DefaultPresenter extends Presenter
 {
@@ -20,6 +21,8 @@ class DefaultPresenter extends Presenter
     public function renderDefault()
     {
         $server = new Server((string) $this->getHttpRequest()->getRawBody());
+
+        $server->withLocalException('InvalidParameterException');
 
         $getTopTenScores = $this->topTenScores;
         $server
