@@ -37,8 +37,8 @@ POST http://127.0.0.1:8000
 {
     "jsonrpc": "2.0",
     "result": {
-        "userId": 7,
         "gameId": 1,
+        "userId": 7,
         "score": 27
     },
     "id": 1
@@ -50,24 +50,30 @@ POST http://127.0.0.1:8000
 {
     "jsonrpc": "2.0",
     "method": "getTopTenScores",
-    "id": 2
+    "id": 2,
+    "params": {
+        "gameId": 1
+    }
 }
 
 // response
 {
     "jsonrpc": "2.0",
-    "result": [
-        {
-            "userId": 7,
-            "score": 508,
-            "order": 1
-        },
-        {
-            "userId": 3,
-            "score": 476,
-            "order": 2
-        }
-    ],
+    "result": {
+        "gameId": 1,
+        "topUsers": [
+            {
+                "userId": 7,
+                "score": 508,
+                "order": 1
+            },
+            {
+                "userId": 3,
+                "score": 476,
+                "order": 2
+            }
+        ]
+    }, 
     "id": 2
 }
 ```

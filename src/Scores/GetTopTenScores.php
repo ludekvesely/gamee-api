@@ -4,30 +4,34 @@ declare(strict_types = 1);
 
 namespace GameeApi\Scores;
 
-use Predis\Client;
-
-class GetTopTenScores
+class GetTopTenScores extends RedisClient
 {
-    private $redisClient;
-
-    public function __construct(Client $redisClient)
+    public function __invoke($gameId): array
     {
-        $this->redisClient = $redisClient;
-    }
+        $this->validateRequiredInt('gameId', $gameId);
+        $foundScores = $this->redisClient->zrevrange($gameId, 0, 9, 'WITHSCORES');
 
-    public function __invoke()
-    {
+        $topTenUsers = [];
+        $order = 0;
+        $prevScore = null;
+
+        foreach ($foundScores as $userId => $score) {
+            if ($score !== $prevScore) {
+                $order++;
+            }
+
+            $topTenUsers[] = [
+                'userId' => $userId,
+                'score' => (int) $score,
+                'order' => $order
+            ];
+
+            $prevScore = $score;
+        }
+
         return [
-            [
-                'userId' => 7,
-                'score' => 508,
-                'order' => 1
-            ],
-            [
-                'userId' => 3,
-                'score' => 508,
-                'order' => 2
-            ]
+            'gameId' => $gameId,
+            'topUsers' => $topTenUsers
         ];
     }
 }

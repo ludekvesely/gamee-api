@@ -29,8 +29,8 @@ class DefaultPresenter extends Presenter
             ->getProcedureHandler()
             ->withCallback(
                 'getTopTenScores',
-                function () use ($getTopTenScores) {
-                    return $getTopTenScores();
+                function ($gameId) use ($getTopTenScores) {
+                    return $getTopTenScores($gameId);
                 }
             );
 
