@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 
-
 echo "==> Store scores"
 
-curl -X POST http://localhost:8000 -H 'content-type: application/json' -d '[
+curl -X POST http://localhost:8087 -H 'content-type: application/json' -d '[
     {"jsonrpc": "2.0", "method": "createScore", "id": 1, "params": {"gameId": 1, "userId": 21, "score": 500}},
     {"jsonrpc": "2.0", "method": "createScore", "id": 2, "params": {"gameId": 1, "userId": 22, "score": 5212}},
     {"jsonrpc": "2.0", "method": "createScore", "id": 3, "params": {"gameId": 1, "userId": 32, "score": 500}},
@@ -23,7 +22,7 @@ echo
 echo
 echo "==> Retrieve top ten users for game 1 (users 21 and 32 have same score)"
 
-curl -X POST http://localhost:8000 -H 'content-type: application/json' -d '{
+curl -X POST http://localhost:8087 -H 'content-type: application/json' -d '{
     "jsonrpc": "2.0",
     "method":
     "getTopTenScores",
@@ -38,7 +37,7 @@ echo
 echo
 echo "==> Retrieve top ten users for game 2 (only 1 user played this game)"
 
-curl -X POST http://localhost:8000 -H 'content-type: application/json' -d '{
+curl -X POST http://localhost:8087 -H 'content-type: application/json' -d '{
     "jsonrpc": "2.0",
     "method":
     "getTopTenScores",
@@ -53,7 +52,7 @@ echo
 echo
 echo "==> Retrieve top users ten for game 3 (no results)"
 
-curl -X POST http://localhost:8000 -H 'content-type: application/json' -d '{
+curl -X POST http://localhost:8087 -H 'content-type: application/json' -d '{
     "jsonrpc": "2.0",
     "method":
     "getTopTenScores",

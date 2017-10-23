@@ -1,18 +1,19 @@
 # Gamee API
 
-Simple API for storing scores and retrieving top 10 scores.
+Simple API for storing game results and retrieving top 10 scores.
 
 ## Requirements
 
-* PHP >= 7.1
-* Composer
-* Redis
+* Docker
 
-## Start application
+## Usage
 
 ```bash
-php -S 127.0.0.1:8000 -t web web/index.php
-open http://127.0.0.1:8000
+# start stack (php and redis)
+docker-compose up -d
+
+# test app with demo data
+bin/demo
 ```
 
 ## API
@@ -21,7 +22,7 @@ open http://127.0.0.1:8000
 
 ```js
 // create new score
-POST http://127.0.0.1:8000 
+POST http://localhost:8087 
 {
     "jsonrpc": "2.0",
     "method": "createScore",
@@ -46,7 +47,7 @@ POST http://127.0.0.1:8000
 
 
 // get top ten users
-POST http://127.0.0.1:8000 
+POST http://localhost:8087 
 {
     "jsonrpc": "2.0",
     "method": "getTopTenScores",
