@@ -22,7 +22,8 @@
     "nette/robot-loader": "^3.0",
     "nette/utils": "^3.0",
     "tracy/tracy": "^2.4",
-    "fguillot/json-rpc": "@stable"
+    "fguillot/json-rpc": "@stable",
+    "predis/predis": "^1.1.1"
   },
   "require-dev": {
     "escapestudios/symfony2-coding-standard": "2.x-dev",

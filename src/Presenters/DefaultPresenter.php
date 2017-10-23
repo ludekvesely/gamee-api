@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace GameeApi\Presenters;
 
@@ -19,14 +19,16 @@ class DefaultPresenter extends Presenter
 
     public function renderDefault()
     {
-        $server = new Server($this->getHttpRequest()->getRawBody());
+        $server = new Server((string) $this->getHttpRequest()->getRawBody());
 
         $getTopTenScores = $this->topTenScores;
         $server
             ->getProcedureHandler()
             ->withCallback(
                 'getTopTenScores',
-                function() use ($getTopTenScores) {return $getTopTenScores();}
+                function () use ($getTopTenScores) {
+                    return $getTopTenScores();
+                }
             );
 
         $createStore = $this->createScore;
@@ -34,7 +36,9 @@ class DefaultPresenter extends Presenter
             ->getProcedureHandler()
             ->withCallback(
                 'createScore',
-                function ($userId, $gameId, $score) use ($createStore) {return $createStore($userId, $gameId, $score);}
+                function ($userId, $gameId, $score) use ($createStore) {
+                    return $createStore($userId, $gameId, $score);
+                }
             );
 
         $this->sendJson(json_decode($server->execute()));

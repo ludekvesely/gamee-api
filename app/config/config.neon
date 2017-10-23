@@ -1,4 +1,8 @@
 parameters:
+    predis:
+        scheme: tcp
+        host: 127.0.0.1
+        port: 6379
 
 application:
 	errorPresenter: Error
@@ -9,3 +13,4 @@ services:
 	router: GameeApi\Router\RouterFactory::createRouter
 	- GameeApi\Scores\CreateScore
 	- GameeApi\Scores\GetTopTenScores
+	- Predis\Client(%predis%)
